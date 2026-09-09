@@ -40,12 +40,12 @@ export default function SignupPage() {
 
   return (
           <div className="flex min-h-screen items-center justify-center">
-          <div className="w-1/2 min-h-screen shadow-md bg-red-500">
+          <div className="w-1/2 min-h-screen shadow-md bg-slate-900">
 
           </div>
      
 
-      <div className="w-1/2 min-h-screen shadow-md bg-red-500">
+      <div className="w-1/2 min-h-screen shadow-md">
           <h2  className="text-6xl font-bold mb-4 text-center ">Create your account</h2>
 <form action="" className="border border-gray-300 p-4 rounded-lg shadow-md mt-10 pt-10 ps-10">
 

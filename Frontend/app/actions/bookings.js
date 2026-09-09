@@ -4,7 +4,7 @@ import { createClient } from '@/lib/supabase/server'
 import { z } from 'zod'
 
 const bookingItemSchema = z.object({
-  product_id: z.uuid(),
+  product_id: z.string().uuid(),
   quantity: z.number().int().positive(),
   start_date: z.string(),
   end_date: z.string(),
@@ -16,12 +16,12 @@ export async function createBooking(items) {
   const supabase = await createClient()
 
   const { data: { user } } = await supabase.auth.getUser()
-  if (!user) {
+  if (!user) {  
     return { error: 'You must be logged in to book.' }
   }
 
   const parsed = createBookingSchema.safeParse(items)
-  if (!parsed.success) {
+  if (!parsed.success) {  
     return { error: 'Invalid booking data.' }
   }
 
@@ -31,7 +31,8 @@ export async function createBooking(items) {
   })
 
   if (error) {
-     return {error: error.message}
+    return { error: error.message }
   }
-  else {return {bookingId: data}}
+
+  return { bookingId: data }
 }

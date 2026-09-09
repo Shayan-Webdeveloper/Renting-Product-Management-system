@@ -2,23 +2,34 @@
 
 import { useState } from 'react'
 import { createBrowserClient } from '@supabase/ssr'
-const supabase = createBrowserClient(
-     process.env.NEXT_PUBLIC_SUPABASE_URL,
-     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-)
-export default function LoginPage() {
-     const [email, setEmail] = useState('')
-     const [password, setPassword] = useState('')
-  const [showPassword, setShowPassword] = useState(false)
-     const [message, setMessage] = useState('')
+import { useRouter } from 'next/navigation'
 
-     async function handleLogin() {
-          const {error} = await supabase.auth.signInWithPassword({
-               email,
-               password
-          })
-          setMessage(error ? error.message : 'Login successful!')
-     }
+const supabase = createBrowserClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+)
+
+export default function LoginPage() {
+  const router = useRouter()
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [showPassword, setShowPassword] = useState(false)
+  const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
+
+  async function handleLogin() {
+    setLoading(true)
+    setError('')
+    const { error } = await supabase.auth.signInWithPassword({ email, password })
+    setLoading(false)
+    if (error) {
+      setError(error.message)
+    } else {
+      router.push('/')
+      router.refresh()
+    }
+  }
+
 
 return (
      <div className="flex min-h-screen items-center justify-center">
@@ -56,9 +67,12 @@ return (
                     </svg>
                   )}
                 </button>
-          <button onClick={handleLogin} className='mt-5 block border px-4 py-2 cursor-pointer'>Login</button>
+        {error && <p className="text-red-600 text-sm mt-3">{error}</p>}
+
+          <button onClick={handleLogin}
+            disabled={loading}   
+          className='mt-5 block border px-4 py-2 cursor-pointer'>{loading ? 'Signing in…' : 'Sign in'}</button>
      <p>Don't have an account? <a href="/signup" className='text-blue-500 underline cursor-pointer'>Sign Up</a></p>
-          {message && <p>{message}</p>}
      </form>
      </div>
      </div>
