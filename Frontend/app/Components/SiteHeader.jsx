@@ -18,7 +18,7 @@ export default function SiteHeader({ user, signOutAction }) {
           <form action={signOutAction}>
             <button
               type="submit"
-              className="border cursor-pointer border py-1.5"
+              className="border cursor-pointer py-1.5"
             >
               Sign out
             </button>

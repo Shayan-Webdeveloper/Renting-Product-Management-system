@@ -50,7 +50,7 @@ export default function ProductForm({ categories }) {
         <select
           name="category_id"
           required
-          className="w-full border border bg-white"
+          className="w-full border bg-white"
         >
           <option value="">Select a category</option>
           {categories.map((cat) => (
