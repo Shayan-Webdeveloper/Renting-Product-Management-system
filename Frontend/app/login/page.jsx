@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { createBrowserClient  } from '@supabase/ssr'
+import { createBrowserClient } from '@supabase/ssr'
 const supabase = createBrowserClient(
      process.env.NEXT_PUBLIC_SUPABASE_URL,
      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
@@ -37,6 +37,7 @@ return (
                   placeholder="Create a password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  className="border w-full border-gray-300 p-2 rounded-lg block"
                 />
                 <button
                   type="button"
