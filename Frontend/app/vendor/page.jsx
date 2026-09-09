@@ -1,9 +1,9 @@
-// app/page.jsx
+// app/vendor/layout.jsx
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
-import BookNowButton from '@/app/Components/BookNowButton'
+import VendorSidebar from '@/app/Components/VendorSidebar'
 
-export default async function Home() {
+export default async function VendorLayout({ children }) {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
 
@@ -17,15 +17,14 @@ export default async function Home() {
     .eq('id', user.id)
     .single()
 
-  if (profile?.role === 'vendor') {
-    redirect('/vendor')
+  if (!profile || profile.role !== 'vendor') {
+    redirect('/')
   }
 
   return (
-    <main className="p-6">
-      <h1 className="text-xl font-semibold text-black">Hello World</h1>
-      <BookNowButton productId="2d6164e6-c778-4778-8098-deb5ebcc8920" dailyRate={500} />
-    </main>
+    <div className="flex">
+      <VendorSidebar />
+      <div className="flex-1">{children}</div>
+    </div>
   )
 }
-
