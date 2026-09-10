@@ -24,7 +24,7 @@ export default async function BrowseProductsPage() {
             return (
               <a
                 key={product.id}
-                href={`/products/${product.id}`}
+                href={`/customer/products/${product.id}`}
                 className="border overflow-hidden"
               >
                 {cover ? (

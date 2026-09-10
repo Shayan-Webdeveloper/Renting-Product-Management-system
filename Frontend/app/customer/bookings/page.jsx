@@ -4,6 +4,7 @@
      const supabase = await createClient()
 
      const { data: { user } } = await supabase.auth.getUser()
+     
      const { data: bookings } = await supabase
      .from('bookings')
      .select('id, customer_id, status, total_price, security_deposit')
@@ -21,7 +22,7 @@
                return (
                <a
                     key={booking.id}
-                    href={`/booking/${booking.id}`}
+                    href={`/customer/bookings/${booking.id}`}
                     className="border overflow-hidden"
                >
                     <div className="p-4">
