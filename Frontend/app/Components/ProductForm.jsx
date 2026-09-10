@@ -32,7 +32,7 @@ export default function ProductForm({ categories }) {
           type="text"
           name="title"
           required
-          className="w-full bg-white border border-slate-200 text-slate-900"
+          className="w-full bg-white border"
         />
       </div>
 

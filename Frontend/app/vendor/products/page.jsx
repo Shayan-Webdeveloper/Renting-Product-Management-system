@@ -16,7 +16,7 @@ export default async function VendorProductsPage() {
     .order('created_at', { ascending: false })
 
   return (
-    <div>
+    <div className="p-4 ps-10">
       <div>
         <h1>Your listings</h1>
         <a
@@ -28,16 +28,17 @@ export default async function VendorProductsPage() {
       </div>
 
       {products && products.length > 0 ? (
-        <div>
+        <div className="grid grid-cols-4 gap-4">
           {products.map((product) => (
             <div
               key={product.id}
+              className="border rounded-lg p-4 text-center"
             >
               {product.product_images?.[0] ? (
                 <img
                   src={product.product_images.sort((a, b) => a.sort_order - b.sort_order)[0].url}
                   alt={product.title}
-                  className="w-24 h-24 object-cover"
+                  className="w-24 h-24 mx-auto object-cover"
                 />
               ) : (
                 <div/>

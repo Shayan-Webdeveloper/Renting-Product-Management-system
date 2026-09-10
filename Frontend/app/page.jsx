@@ -21,6 +21,10 @@ export default async function Home() {
     redirect('/vendor')
   }
 
+  if (profile?.role === 'customer') {
+    redirect('/customer')
+  }
+
   return (
     <main className="p-6">
       <h1 className="text-xl font-semibold text-black">Hello World</h1>

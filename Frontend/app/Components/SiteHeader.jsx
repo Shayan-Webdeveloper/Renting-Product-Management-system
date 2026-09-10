@@ -29,7 +29,6 @@ export default function SiteHeader({ user, signOutAction }) {
           <a href="/login" className="text-slate-500 hover:text-slate-900">Log in</a>
           <a
             href="/signup"
-            className="bg-orange-600 hover:bg-orange-500 text-white font-medium px-3 py-1.5 rounded transition-colors"
           >
             Sign up
           </a>
