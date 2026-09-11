@@ -31,7 +31,6 @@ export default async function AdminBookingsPage() {
   const vendorsByBooking = {}
   for (const item of items ?? []) {
     const vendorName = item.products?.vendor?.full_name
-    if (!vendorName) continue
     if (!vendorsByBooking[item.booking_id]) {
       vendorsByBooking[item.booking_id] = new Set()
     }
@@ -44,19 +43,19 @@ export default async function AdminBookingsPage() {
       <p className="text-slate-500 text-sm mb-8">Every booking across the platform.</p>
 
       <div className="space-y-3">
-        {(bookings ?? []).map((booking) => (
-          <div key={booking.id} className="bg-white border border-slate-200 rounded p-4">
-            <div className="flex items-center justify-between mb-2">
-              <p className="font-medium text-slate-900">Rs. {booking.total_price}</p>
-              <span className="text-xs font-medium px-2.5 py-1 rounded bg-slate-100 text-slate-700 capitalize">
+        {bookings.map((booking) => (
+          <div key={booking.id} className="bg-white border p-2">
+            <div>
+              <p>Rs. {booking.total_price}</p>
+              <span>
                 {booking.status}
               </span>
             </div>
-            <p className="text-sm text-slate-500">
-              Customer: {booking.customer?.full_name} ({booking.customer?.email})
+            <p>
+              Customer: {booking.customer.full_name} ({booking.customer.email})
             </p>
-            <p className="text-sm text-slate-500">
-              Vendor(s): {[...(vendorsByBooking[booking.id] ?? [])].join(', ') || 'Unknown'}
+            <p>
+              Vendor: {[...vendorsByBooking[  booking.id]]}
             </p>
           </div>
         ))}
@@ -64,3 +63,14 @@ export default async function AdminBookingsPage() {
     </div>
   )
 }
+
+
+
+
+
+
+
+
+
+
+// https://xhtv.live/videos/oral-creampie-compilation-2-cum-in-mouth-throbbing-cock-cum-dripping-blowjob-oral-cumshot-xh2wvMc

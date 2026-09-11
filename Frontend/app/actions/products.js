@@ -5,11 +5,16 @@ import { revalidatePath } from 'next/cache'
 import { z } from 'zod'
 
 const productSchema = z.object({
-  title: z.string().min(3),
-  description: z.string().optional(),
-  category_id: z.uuid(),
-  daily_rate: z.coerce.number().positive(),
-  security_deposit: z.coerce.number().min(0),
+  title: z.string().trim().min(3, 'Title must be at least 3 characters long.'),
+  description: z.string().trim().optional().or(z.literal('')),
+  category_id: z.string().trim().uuid('Please select a valid category.'),
+  daily_rate: z.coerce
+    .number({ invalid_type_error: 'Daily rate is required.' })
+    .positive('Daily rate must be greater than zero.'),
+  security_deposit: z.coerce
+    .number({ invalid_type_error: 'Security deposit must be a number.' })
+    .min(0, 'Security deposit cannot be negative.')
+    .default(0),
 })
 
 export async function createProduct(formData) {
@@ -39,7 +44,8 @@ export async function createProduct(formData) {
   })
 
   if (!parsed.success) {
-    return { error: 'Please check the form fields.' }
+    const firstIssue = parsed.error.issues[0]
+    return { error: firstIssue?.message || 'Please check the form fields.' }
   }
 
   const { data: product, error } = await supabase
@@ -94,7 +100,8 @@ export async function updateProduct(productId, formData) {
   })
 
   if (!parsed.success) {
-    return { error: 'Please check the form fields.' }
+    const firstIssue = parsed.error.issues[0]
+    return { error: firstIssue?.message || 'Please check the form fields.' }
   }
 
   const { error } = await supabase
