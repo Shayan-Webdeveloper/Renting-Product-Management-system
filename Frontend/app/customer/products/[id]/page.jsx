@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
-import BookingForm from '@/app/components/BookingForm'
+import BookingForm from '@/app/Components/BookingForm'
 
 export default async function ProductDetailPage({ params }) {
   const { id } = await params
