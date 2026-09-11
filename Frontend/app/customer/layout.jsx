@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
-import CustomerSidebar from '@/app/Components/CustomerSidebar'
+import CustomerSidebar from '@/app/C  omponents/CustomerSidebar'
 
 export default async function CustomerLayout({ children }) {
   const supabase = await createClient()
