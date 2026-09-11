@@ -24,6 +24,9 @@ export default async function Home() {
   if (profile?.role === 'customer') {
     redirect('/customer')
   }
+    if (profile?.role === 'admin') {
+    redirect('/admin')
+  }
 
   return (
     <main className="p-6">
