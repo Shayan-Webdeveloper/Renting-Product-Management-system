@@ -10,9 +10,9 @@
 
     return (
       <html lang="en">
-        <body className="bg-slate-50 text-slate-900 min-h-screen">
+        <body className="min-h-screen bg-slate-950 text-slate-100">
           <SiteHeader user={user} signOutAction={signOut} />
-          <main>{children}</main>
+          <main className="bg-slate-950">{children}</main>
         </body>
       </html>
     );

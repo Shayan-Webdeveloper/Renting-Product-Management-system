@@ -18,8 +18,8 @@ const { data: products } = await supabase.from('products').select('*')
 
       <div className="gap-4">
         <div className="bg-white border p-3 text-center">
-          <p className="mb-1">Total Products</p>
-          <p>{totalProducts}</p>
+          <p className="mb-1 text-slate-900">Total Products</p>
+          <p className='text-slate-900'>{totalProducts}</p>
         </div>
       </div>
 

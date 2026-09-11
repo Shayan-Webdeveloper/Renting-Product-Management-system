@@ -27,13 +27,13 @@ export default async function AdminCustomersPage() {
 
   return (
     <div className="p-8">
-      <h1 className="text-2xl font-semibold text-slate-900 mb-1">Customers</h1>
-      <p className="text-slate-500 text-sm mb-8">Every customer on the platform.</p>
+      <h1 className="text-2xl font-semibold text-white mb-1">Customers</h1>
+      <p className="text-slate-300 text-sm mb-8">Every customer on the platform.</p>
 
       {customers && customers.length > 0 ? (
         <div className="space-y-3">
           {customers.map((customer) => (
-            <div key={customer.id} className="bg-white border flex items-center justify-between">
+            <div key={customer.id} className="bg-white text-slate-900 p-4 rounded border flex items-center justify-between">
               <div>
                 <p>{customer.full_name}</p>
                 <p>{customer.email}{customer.phone ? ` · ${customer.phone}` : ''}</p>

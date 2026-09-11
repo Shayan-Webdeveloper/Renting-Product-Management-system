@@ -1,5 +1,7 @@
 'use client'
 
+import { usePathname } from 'next/navigation'
+
 const links = [
   { href: '/customer', label: 'Overview' },
   { href: '/customer/products', label: 'Browse' },
@@ -8,19 +10,27 @@ const links = [
 ]
 
 export default function CustomerSidebar() {
+  const pathname = usePathname()
 
   return (
-    <aside className="w-56 flex-shrink-0 min-h-[calc(100vh-65px)] p-4">
-      <p className=" px-3 mb-2">
-        Customer
-      </p>
-      <nav className="space-y-1">
+    <aside className="w-64 flex-shrink-0 border-r border-slate-800 bg-slate-950/90 p-4 text-slate-200 min-h-[calc(100vh-65px)]">
+      <div className="mb-6 px-3 pt-2">
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">Customer</p>
+      </div>
+
+      <nav className="space-y-2">
         {links.map((link) => {
+          const isActive = pathname === link.href
+
           return (
             <a
               key={link.href}
               href={link.href}
-              className='block'
+              className={`block rounded-xl border px-3 py-2.5 text-sm font-medium transition ${
+                isActive
+                  ? 'border-slate-600 bg-slate-800 text-white'
+                  : 'border-transparent text-slate-300 hover:border-slate-700 hover:bg-slate-900 hover:text-white'
+              }`}
             >
               {link.label}
             </a>

@@ -39,12 +39,12 @@ export default async function AdminBookingsPage() {
 
   return (
     <div className="p-8">
-      <h1 className="text-2xl font-semibold text-slate-900 mb-1">All bookings</h1>
-      <p className="text-slate-500 text-sm mb-8">Every booking across the platform.</p>
+      <h1 className="text-2xl font-semibold text-white mb-1">All bookings</h1>
+      <p className="text-slate-300 text-sm mb-8">Every booking across the platform.</p>
 
       <div className="space-y-3">
         {bookings.map((booking) => (
-          <div key={booking.id} className="bg-white border p-2">
+          <div key={booking.id} className="bg-white border text-slate-900 p-2">
             <div>
               <p>Rs. {booking.total_price}</p>
               <span>

@@ -31,20 +31,20 @@ export default async function VendorOverviewPage() {
 
       <div className="grid grid-cols-3 gap-4">
         <div className="bg-white border p-3">
-          <p className="mb-1">Total Products</p>
-          <p>{totalProducts}</p>
+          <p className="mb-1 text-slate-900">Total Products</p>
+          <p className='text-slate-900'>{totalProducts}</p>
         </div>
         <div className="bg-white border p-3">
-          <p className="mb-1">Total Bookings</p>
-          <p>{totalBookings}</p>
+          <p className="mb-1 text-slate-900">Total Bookings</p>
+          <p className='text-slate-900'>{totalBookings}</p>
         </div>
         <div className="bg-white border p-3">
-          <p className="mb-1">Total Vendors</p>
-          <p>{totalVendors}</p>
+          <p className="mb-1 text-slate-900">Total Vendors</p>
+          <p className='text-slate-900'>{totalVendors}</p>
         </div>
         <div className="bg-white border p-3">
-          <p className="mb-1">Total Customers</p>
-          <p>{totalCustomers}</p>
+          <p className="mb-1 text-slate-900">Total Customers</p>
+          <p className='text-slate-900'>{totalCustomers}</p>
         </div>
       </div>
     </div>

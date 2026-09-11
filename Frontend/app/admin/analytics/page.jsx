@@ -42,32 +42,32 @@ export default async function AdminAnalyticsPage() {
   return (
     <div className="p-8">
       <h1>Analytics</h1>
-      <p>Platform-wide performance.</p>
+      <p className='mt-1'>Platform-wide performance.</p>
 
-      <div className="grid grid-cols-4 gap-4">
-        <div className="bg-white border">
-          <p>Total revenue</p>
-          <p>Rs. {totalRevenue}</p>
+      <div className="grid grid-cols-4 gap-4 mt-4">
+        <div className="bg-white border p-4 rounded">
+          <p className='text-slate-900'>Total revenue</p>
+          <p className='text-slate-900'>Rs. {totalRevenue}</p>
         </div>
-        <div className="bg-white border">
-          <p>Total bookings</p>
-          <p>{totalBookings ?? 0}</p>
+        <div className="bg-white border p-4 rounded">
+          <p className='text-slate-900'>Total bookings</p>
+          <p className='text-slate-900'>{totalBookings ?? 0}</p>
         </div>
-        <div className="bg-white border">
-          <p>Total vendors</p>
-          <p>{totalVendors ?? 0}</p>
+        <div className="bg-white border p-4 rounded">
+          <p className='text-slate-900'>Total vendors</p>
+          <p className='text-slate-900'>{totalVendors ?? 0}</p>
         </div>
-        <div className="bg-white border">
-          <p>Total customers</p>
-          <p>{totalCustomers ?? 0}</p>
+        <div className="bg-white border p-4 rounded">
+          <p className='text-slate-900'>Total customers</p>
+          <p className='text-slate-900'>{totalCustomers ?? 0}</p>
         </div>
       </div>
 
-      <h2>Top vendors by revenue</h2>
+      <h2 className='mt-5 mb-2'>Top vendors by revenue</h2>
       {topVendors.length > 0 ? (
         <div className="space-y-2">
           {topVendors.map(([name, revenue]) => (
-            <div key={name} className="bg-white border flex items-center justify-between">
+            <div key={name} className="bg-white p-3 rounded border flex items-center justify-between">
               <p className="text-slate-900">{name}</p>
               <p className="font-medium text-slate-900">Rs. {revenue}</p>
             </div>

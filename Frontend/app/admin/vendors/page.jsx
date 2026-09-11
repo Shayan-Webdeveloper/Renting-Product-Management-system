@@ -27,8 +27,8 @@ export default async function AdminVendorsPage() {
 
   return (
     <div className="p-8">
-      <h1 className="text-2xl font-semibold text-slate-900 mb-1">Vendors</h1>
-      <p className="text-slate-500 text-sm mb-8">Every vendor on the platform.</p>
+      <h1 className="text-2xl font-semibold text-white mb-1">Vendors</h1>
+      <p className="text-slate-300 text-sm mb-8">Every vendor on the platform.</p>
 
       {vendors && vendors.length > 0 ? (
         <div className="space-y-3">
